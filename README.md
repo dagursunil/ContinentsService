@@ -1,6 +1,6 @@
-# wallet-microservice
+# continent-service
 
-Wallet MicroService is a Spring Boot project. its basically a service that manages player accounts and registers transactions for game players . Spring Framework is employed for this mini project as it provides the extension configuration 
+Continent Flag Service is a Spring Boot project. It is used to get flags for the countries based on input paramenters. Spring Framework is employed for this mini project as it provides the extension configuration 
 on convention mode reducing the need to write a lot of configuration and boilerplate code.
 
 # production ready dependencies
@@ -24,3 +24,9 @@ on convention mode reducing the need to write a lot of configuration and boilerp
 </plugin>
 ```
 4. Adjusting the number of concurrent threads in application.properties example: server.tomcat.max-threads=400 .
+
+5. Known Issues :
+ a.) H2 db is being used however no db operations are performed.
+ b.) Values are being fetched from json file itself which has been added to project.
+ c.) As flags are being used as string , Spring service results them as String only.
+ 4.) For showing flags as image application can be extended and Front End UI can be added.
