@@ -17,9 +17,7 @@ import sk.beans.Country;
 
 /**
  *
- * @author sdagur this is an implementation of the account/player service
- *         interface since it is the only implementation no qualifier is defined
- *         for the service bean
+ * @author sdagur 
  */
 @Service
 public class ContinentServiceImpl implements ContinentService {
