@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +31,9 @@ import com.sk.continent.service.ContinentService;
 public class ContinentsController {
 
   @Autowired
-  private ContinentService accountService;
+  private ContinentService service;
+  
+  private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
    @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -45,18 +49,21 @@ public class ContinentsController {
   }
   @GetMapping
   public List<String> getAllFlags() throws IOException{
-	 List<String> flags= accountService.getAllFlags();
+	 LOGGER.info("Inside controller method getAllFlags..");
+	 List<String> flags= service.getAllFlags();
 	 return flags;
   }
   
   @GetMapping("/{continentName}")
   public ResponseEntity<List<String>> getFlagsForContinents(@PathVariable(value="continentName") String continentName) throws IOException {
-	  List<String> flags= accountService.getAllFlagsForContinent(continentName);
+	  List<String> flags= service.getAllFlagsForContinent(continentName);
+	  LOGGER.info("Inside controller method getFlagsForContinents..");
 	  return new ResponseEntity<List<String>>(flags, HttpStatus.CREATED);
 	  
   }
   @GetMapping("/country/{countryName}")
   public String getFlagForCountry(@PathVariable(value="countryName") String countryName) throws IOException {
-	  return accountService.getFlagForCountry(countryName);
+	  LOGGER.info("Inside controller method getFlagForCountry..");
+	  return service.getFlagForCountry(countryName);
   }
 }

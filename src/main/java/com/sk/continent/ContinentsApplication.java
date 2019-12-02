@@ -2,14 +2,17 @@ package com.sk.continent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableTransactionManagement
-public class ContinentsApplication {
+public class ContinentsApplication  {
 
   public static void main(String[] args) {
-    SpringApplication.run(ContinentsApplication.class, args);
+    try {
+		SpringApplication.run(ContinentsApplication.class, args);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   }
 }
 
